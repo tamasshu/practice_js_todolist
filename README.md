@@ -1,0 +1,2 @@
+# practice_js_todolist
+JavaScriptを習得するためにToDoリストのアプリを作成する
