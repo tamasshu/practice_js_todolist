@@ -1,9 +1,7 @@
-import { onClickAdd, setTodayDate } from "./task-manager.js";
+import { onClickAdd } from "./task-manager.js";
 import { sortTasks } from "./sort.js";
 
 window.addEventListener("DOMContentLoaded", () => {
-  setTodayDate();
-
   // タスク追加ボタンのクリックイベント
   document.getElementById("button-add").addEventListener("click", onClickAdd);
 

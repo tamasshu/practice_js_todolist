@@ -1,0 +1,61 @@
+body {
+  margin: 0 auto;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 20px;
+  color: #333;
+  background-color: #EDF2F6;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-align: center;
+}
+
+input,
+select {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #0D83FD;
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+    border: 2px solid #0D83FD;
+  }
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 24px 40px;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p {
+  margin-right: 8px;
+}
+
+label {
+  font-size: 16px;
+}
+
+button {
+  margin-left: 24px;
+  padding: 4px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
