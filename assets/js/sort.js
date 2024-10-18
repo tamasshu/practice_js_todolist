@@ -1,14 +1,12 @@
 import { addTask } from "./task-manager.js";
 
 export const sortTasks = () => {
-  // 画面上のタスクリストを取得
-  const tasks = [];
-  document.querySelectorAll("#tasks li").forEach(li => {
+  const tasks = Array.from(document.querySelectorAll("#tasks li")).map(li => {
     const taskText = li.querySelector(".task-name").innerText;
     const completed = li.classList.contains("completed");
     const priority = li.querySelector(".task-priority").value;
     const deadline = li.querySelector(".task-deadline").value;
-    tasks.push({ text: taskText, completed, priority, deadline });
+    return { text: taskText, completed, priority, deadline };
   });
 
   // 優先度と締切日のセレクションを取得
@@ -34,7 +32,7 @@ export const sortTasks = () => {
   // タスクリストを再表示
   const tasksContainer = document.getElementById("tasks");
   tasksContainer.innerHTML = ""; // タスクリストをクリア
-  tasks.forEach(task => addTask(task.text, task.completed, task.priority, task.deadline)); // ソートされたタスクを再追加
+  tasks.map(task => addTask(task.text, task.completed, task.priority, task.deadline)); // ソートされたタスクを再追加
 };
 
 // 優先度の値を数値化

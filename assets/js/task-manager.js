@@ -17,19 +17,13 @@ export const onClickAdd = () => {
 export const addTask = (inputText, completed, priority = "", deadline = "") => {
   const tasksContainer = document.getElementById("tasks");
   const fragment = document.createDocumentFragment();
-  const taskElement = createTaskElement(
-    inputText,
-    completed,
-    priority,
-    deadline
-  );
+  const taskElement = createTaskElement(inputText, completed, priority, deadline);
   fragment.appendChild(taskElement);
   tasksContainer.appendChild(fragment);
 };
 
 const createTaskElement = (inputText, completed, priority, deadline) => {
   const li = document.createElement("li");
-  li.classList.add("task");
 
   if (completed) {
     li.classList.add("completed");
@@ -43,7 +37,6 @@ const createTaskElement = (inputText, completed, priority, deadline) => {
   taskInfoDiv.classList.add("task-info");
 
   const taskPrioritySelect = createPrioritySelect(priority);
-
 
   const taskDeadlineInput = document.createElement("input");
   taskDeadlineInput.classList.add("task-deadline");
@@ -72,15 +65,17 @@ const createPrioritySelect = (priority) => {
   ];
 
   // 優先度のオプションを追加
-  priorities.forEach(({ value, text }) => {
+  const options = priorities.map(({ value, text }) => {
     const option = document.createElement("option");
     option.value = value;
     option.innerText = text;
     if (value === priority) {
       option.selected = true;
     }
-    taskPrioritySelect.appendChild(option);
+    return option;
   });
+
+  taskPrioritySelect.append(...options);
 
   return taskPrioritySelect;
 }
