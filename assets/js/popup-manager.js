@@ -1,27 +1,32 @@
-export const showDeletePopup = (li) => {
-  const popup = document.getElementById("delete-popup");
-  const popupTaskName = document.getElementById("popup-task-name");
-  const popupTaskPriority = document.getElementById("popup-task-priority");
-  const popupTaskDeadline = document.getElementById("popup-task-deadline");
-  const confirmDeleteButton = document.getElementById("button-confirm");
-  const cancelDeleteButton = document.getElementById("button-cancel");
+export const showDeletePopup = (taskLi) => {
+  const popup = {
+    popup: document.getElementById("delete-popup"),
+    taskName: document.getElementById("popup-task-name"),
+    taskPriority: document.getElementById("popup-task-priority"),
+    taskDeadline: document.getElementById("popup-task-deadline"),
+    confirmDeleteButton: document.getElementById("button-confirm"),
+    cancelDeleteButton: document.getElementById("button-cancel"),
+  };
 
-  const taskName = li.querySelector(".task-name").innerText;
-  const taskPriority = li.querySelector(".task-priority");
-  const taskDeadline = li.querySelector(".task-deadline");
+  const popupTask = {
+    name: taskLi.querySelector(".input-name").innerText,
+    priority: taskLi.querySelector(".input-priority"),
+    deadline: taskLi.querySelector(".input-deadline"),
+  };
 
-  popupTaskName.innerText = taskName;
-  popupTaskPriority.innerText = taskPriority.options[taskPriority.selectedIndex].text || "なし";
-  popupTaskDeadline.innerText = taskDeadline.value || "なし";
+  popup.taskName.innerText = popupTask.name;
+  popup.taskPriority.innerText =
+    popupTask.priority.options[popupTask.priority.selectedIndex].text || "なし";
+  popup.taskDeadline.innerText = popupTask.deadline.value || "なし";
 
-  popup.classList.remove("hidden");
+  popup.popup.classList.remove("hidden");
 
-  confirmDeleteButton.addEventListener("click", () => {
-    li.remove();
-    popup.classList.add("hidden");
+  popup.confirmDeleteButton.addEventListener("click", () => {
+    taskLi.remove();
+    popup.popup.classList.add("hidden");
   });
 
-  cancelDeleteButton.addEventListener("click", () => {
-    popup.classList.add("hidden");
+  popup.cancelDeleteButton.addEventListener("click", () => {
+    popup.popup.classList.add("hidden");
   });
 };

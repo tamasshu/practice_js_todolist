@@ -1,14 +1,14 @@
-@use 'base';
+@use "base";
 
 .button__add {
-  background-color: #0D83FD;
-  color: #FFF;
+  background-color: #0d83fd;
+  color: #fff;
 }
 
 .button__delete,
 .button__delete-confirm {
-  background-color: #FF453A;
-  color: #FFF;
+  background-color: #ff453a;
+  color: #fff;
   margin: 0;
 }
 
@@ -66,18 +66,18 @@
 .list-area {
   width: 100%;
   max-width: 1080px;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 16px;
   margin: 0 auto;
 }
 
-.task-info {
+.priorities-and-buttons {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.completed >  * {
+.completed > * {
   opacity: 0.5;
 }
 
@@ -99,7 +99,7 @@
   position: relative;
   margin: auto;
   padding: 20px;
-  background: #FFF;
+  background: #fff;
   border-radius: 6px;
   width: 60%;
   top: 50%;

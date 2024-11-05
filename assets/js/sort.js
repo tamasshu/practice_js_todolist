@@ -1,46 +1,37 @@
 import { addTask } from "./task-manager.js";
+import { getTasks } from "../../lib/get-tasks.js";
+import { sortTasksByPriority } from "../../lib/sort-tasks-by-priority.js";
+import { sortTasksByDeadline } from "../../lib/sort-tasks-by-deadline.js";
 
 export const sortTasks = () => {
-  const tasks = Array.from(document.querySelectorAll("#tasks li")).map(li => {
-    const taskText = li.querySelector(".task-name").innerText;
+  const tasks = Array.from(document.querySelectorAll("#tasks li")).map((li) => {
+    const taskData = getTasks(li);
     const completed = li.classList.contains("completed");
-    const priority = li.querySelector(".task-priority").value;
-    const deadline = li.querySelector(".task-deadline").value;
-    return { text: taskText, completed, priority, deadline };
+    return { ...taskData, completed };
   });
 
   // 優先度と締切日のセレクションを取得
-  const selectedPriority = document.getElementById('sort-select-priority')?.value;
-  const selectedDeadline = document.getElementById('sort-select-deadline')?.value;
+  const selectedPriority = document.getElementById(
+    "sort-select-priority"
+  )?.value;
+  const selectedDeadline = document.getElementById(
+    "sort-select-deadline"
+  )?.value;
 
   if (!selectedPriority || !selectedDeadline) return;
 
   // 締切日でソート
-  if (selectedDeadline === 'sort-select__deadline-early') {
-    tasks.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
-  } else if (selectedDeadline === 'sort-select__deadline-late') {
-    tasks.sort((a, b) => new Date(b.deadline) - new Date(a.deadline));
+  if (selectedDeadline) {
+    sortTasksByDeadline(tasks, selectedDeadline);
   }
 
   // 優先度でソート
-  if (selectedPriority === 'sort-select__priority-heigh') {
-    tasks.sort((a, b) => priorityValue(b.priority) - priorityValue(a.priority));
-  } else if (selectedPriority === 'sort-select__priority-low') {
-    tasks.sort((a, b) => priorityValue(a.priority) - priorityValue(b.priority));
+  if (selectedPriority) {
+    sortTasksByPriority(tasks, selectedPriority);
   }
 
   // タスクリストを再表示
   const tasksContainer = document.getElementById("tasks");
   tasksContainer.innerHTML = ""; // タスクリストをクリア
-  tasks.map(task => addTask(task.text, task.completed, task.priority, task.deadline)); // ソートされたタスクを再追加
-};
-
-// 優先度の値を数値化
-const priorityValue = (priority) => {
-  switch (priority) {
-    case 'task-priority__heigh': return 3;
-    case 'task-priority__medium': return 2;
-    case 'task-priority__low': return 1;
-    default: return 0;
-  }
+  tasks.map(({ completed, ...taskData }) => addTask(taskData, completed));
 };

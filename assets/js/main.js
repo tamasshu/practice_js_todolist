@@ -1,9 +1,11 @@
-import { onClickAdd } from "./task-manager.js";
+import { clickAddButton } from "./task-manager.js";
 import { sortTasks } from "./sort.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   // タスク追加ボタンのクリックイベント
-  document.getElementById("button-add").addEventListener("click", onClickAdd);
+  document
+    .getElementById("button-add")
+    .addEventListener("click", clickAddButton);
 
   // ソートの設定
   document

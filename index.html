@@ -13,29 +13,27 @@
         <input type="text" id="input-task" placeholder="タスクを入力してください">
         <div class="task-selects">
           <div class="task-controls">
-            <select id="task-priority">
-              <option value="task-priority__heigh">高</option>
-              <option value="task-priority__medium" selected>中</option>
-              <option value="task-priority__low">低</option>
+            <select id="input-priority">
+              <option value="input-priority__high">高</option>
+              <option value="input-priority__medium" selected>中</option>
+              <option value="input-priority__low">低</option>
             </select>
-            <input type="date" id="task-deadline">
+            <input type="date" id="input-deadline">
           </div>
           <button id="button-add" class="button__add">追加</button>
         </div>
       </div>
       <div class="sort-area">
-        <div class="sort-selects">
-          <label for="sort-select">優先度：</label>
+        <div class="sort-select">
           <select id="sort-select-priority">
-            <option value="sort-select__priority-none"></option>
-            <option value="sort-select__priority-heigh">高い順</option>
+            <option value="sort-select__priority-none">優先度順</option>
+            <option value="sort-select__priority-high">高い順</option>
             <option value="sort-select__priority-low">低い順</option>
           </select>
         </div>
-        <div class="sort-selects">
-          <label for="sort-select">締切日：</label>
+        <div class="sort-select">
           <select id="sort-select-deadline">
-            <option value="sort-select__deadline-none"></option>
+            <option value="sort-select__deadline-none">締切日順</option>
             <option value="sort-select__deadline-early">早い順</option>
             <option value="sort-select__deadline-late">遅い順</option>
           </select>
