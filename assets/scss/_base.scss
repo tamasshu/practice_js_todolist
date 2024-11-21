@@ -13,9 +13,9 @@ h1 {
   text-align: center;
 }
 
-input {
+input,
+select {
   height: 40px;
-  width: 84%;
   padding: 0 16px;
   border: 1px solid #0D83FD;
   border-radius: 4px;
@@ -27,7 +27,11 @@ input {
 }
 
 ul {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   list-style: none;
+  margin: 0;
   padding: 24px 40px;
 }
 
@@ -39,6 +43,10 @@ li {
 
 p {
   margin-right: 8px;
+}
+
+label {
+  font-size: 16px;
 }
 
 button {
