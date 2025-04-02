@@ -1,5 +1,5 @@
 ## 目的
-JavaScriptを習得するためにToDoリストのアプリを作成する
+JavaScriptを習得するために、ToDoリストのアプリを作成しました(2024年10月〜)
 
 ## 確認方法
 1. VSCodeの拡張機能で"Live Server"をインストールする
